@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر النسر</title>
+    <style>
+        /* إعدادات الصفحة الأساسية */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* تصميم الهيدر */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        header .store-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        header .store-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header .contact {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 15px;
+            font-size: 14px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background-color: #777;
+        }
+
+        /* تنسيق الصفحة الرئيسية */
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* تنسيق المنتجات */
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .product h3 {
+            margin: 10px 0;
+            font-size: 20px;
+        }
+
+        .product p {
+            font-size: 16px;
+        }
+
+        /* خيارات الألوان */
+        .color-options {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .color-options button {
+            width: 30px;
+            height: 30px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .color-options button.red {
+            background-color: rgb(38, 15, 130);
+        }
+
+        .color-options button.black {
+            background-color: black;
+        }
+
+        .color-options button.white {
+            background-color: white;
+            border: 1px solid #ddd;
+        }
+
+        /* وضع الداكن */
+        .dark-mode {
+            background-color: #121212;
+            color: #f8f8f8;
+        }
+
+        .dark-mode .product {
+            background-color: #1f1f1f;
+            border-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر -->
+    <header>
+        <div class="store-info">
+            <div class="store-name">متجر النسر</div>
+            <div class="contact">رقم التواصل: 01280440587</div>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">تبديل الوضع</button>
+    </header>
+
+    <!-- المحتوى -->
+    <div class="container">
+        <!-- قسم البناطيل -->
+        <div class="section" id="pants-section">
+            <h2>قسم البناطيل</h2>
+            <div class="product" id="pants">
+                <img src="2.2.jpg" alt="بنطلون" id="pants-image">
+                <h3>بنطلون وايت ليج</h3>
+                <p>السعر: 350 جنيه</p>
+                <div class="color-options">
+                    <button class="black" onclick="changePantsColor('black')"></button>
+                    <button class="white" onclick="changePantsColor('white')"></button>
+                    <button class="red" onclick="changePantsColor('red')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم الهودي -->
+        <div class="section" id="hoodie-section">
+            <h2>قسم الهودي</h2>
+            <div class="product" id="hoodie">
+                <img src="5.5.jpg" alt="هودي" id="hoodie-image">
+                <h3>هودي كلاسيك</h3>
+                <p>السعر: 450 جنيه</p>
+                <div class="color-options">
+                    <button class="black" onclick="changeHoodieColor('black')"></button>
+                    <button class="white" onclick="changeHoodieColor('white')"></button>
+                    <button class="red" onclick="changeHoodieColor('red')"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- السكربت -->
+    <script>
+        // تغيير ألوان البنطلون
+        function changePantsColor(color) {
+            const pantsImage = document.getElementById('pants-image');
+            switch (color) {
+                case 'black':
+                    pantsImage.src = '2.jpg'; // صورة البنطلون الأسود
+                    break;
+                case 'white':
+                    pantsImage.src = '3.jpg'; // صورة البنطلون الأبيض
+                    break;
+                case 'red':
+                    pantsImage.src = '1.jpg'; // صورة البنطلون الأحمر
+                    break;
+                default:
+                    pantsImage.src = '2.2.jpg'; // صورة افتراضية
+            }
+        }
+
+        // تغيير ألوان الهودي
+        function changeHoodieColor(color) {
+            const hoodieImage = document.getElementById('hoodie-image');
+            switch (color) {
+                case 'black':
+                    hoodieImage.src = '5.jpg'; // صورة الهودي الأسود
+                    break;
+                case 'white':
+                    hoodieImage.src = '4.jpg'; // صورة الهودي الأبيض
+                    break;
+                case 'red':
+                    hoodieImage.src = '6.jpg'; // صورة الهودي الأحمر
+                    break;
+                default:
+                    hoodieImage.src = '5.jpg'; // صورة افتراضية
+            }
+        }
+
+        // تبديل الوضع المظلم والفاتح
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
